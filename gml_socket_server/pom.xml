@@ -20,5 +20,18 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
     </properties>
+    <build>
+        <plugins>
+            <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.5.1</version>
+            <configuration>
+                <mainClass>com.hexacloud.Main</mainClass>
+            </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>

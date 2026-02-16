@@ -1,5 +1,19 @@
 # gml_socket_server • Simple Server Test for GameMaker Studio
 
+# Stack Overview
+Maven 4.0.0
+Java 21 (server-side)
+- gson (for JSON handling) com.google.code.gson
+GML 2024.14.3.260 (client-side)
+
+# how to use this project
+1. Clone the repository `git clone https://github.com/Watashi00/gml_game_socket.git`
+2. Build the server using Maven: `mvn compile`
+3. Run the server: `mvn exec:java`
+4. Open the `gml_game` GameMaker project and configure the client to connect to the server (e.g., set the server IP and port in [Config.gml](/gml_game/Blank%20Pixel%20Game/scripts/Config/Config.gml)).
+5. Run the GameMaker project to see the client connect to the server and exchange messages.
+
+
 A lightweight networking server (and client helpers) designed to test and accelerate multiplayer / realtime features for **GameMaker Studio** projects.
 
 This project provides:
@@ -29,7 +43,7 @@ This project provides:
 - WS / WSS
 - HTTP / HTTPS
 
-### Client (`gml_game` + `gml_socket_client`)
+### Client (`gml_game` + `network_create_server` provided by GameMaker)
 - TCP
 - UDP
 - WS / WSS
@@ -56,6 +70,9 @@ This project provides:
 - ✅ IPv4 + IPv6 support
 - ✅ Multiple server instances (regions / game modes)
 - ✅ Optional integration with GameMaker built-in networking functions
+- ✅ Example GameMaker project demonstrating client-server communication
+- ✅ Documentation + usage guides for developers
+- ✅ Personalized endpoint URLs for clients (e.g., matchmaking, lobby services) - created by developers using the API, not built-in
 
 ---
 
