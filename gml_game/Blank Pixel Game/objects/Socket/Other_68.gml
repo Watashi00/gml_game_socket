@@ -1,5 +1,9 @@
 var t = async_load[? "type"];
 
+if (t == network_type_connect) {
+	show_message("connected");
+}
+
 if (t == network_type_data) {
 	var bid = async_load[? "buffer"];
 	buffer_seek(bid, buffer_seek_start, 0);
