@@ -11,6 +11,9 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 public class Server {
 
     public void run(int port) {
@@ -18,6 +21,7 @@ public class Server {
             System.out.println("listening on port " + port);
             while (true) {
                 Socket socket = server.accept();
+
                 new Thread(() -> handle(socket)).start();
             }
         } catch (IOException e) {
@@ -30,21 +34,27 @@ public class Server {
         try(socket) {
             var in = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
             var out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8));
-            out.write("OK\n");
-            out.flush();
+            Gson gson = new Gson();
 
             String line;
-            while((line = in.readLine()) != null ) {
-                System.out.println("recv:" + line);
+            while ((line = in.readLine()) != null) {
+                System.out.println("recv: " + line);
 
-                out.write("echo " + line + "\n");
-                out.flush();
+                var json = gson.fromJson(line, JsonObject.class);
+                var op = json.get("op").getAsString();
 
+                if (op.equals("ping")) {
+                    out.write("{\"op\":\"pong\"}\n");
+                    out.flush();
+                }
             }
 
             System.out.println("Disconnected" + socket.getRemoteSocketAddress());
+        
         } catch (IOException e ) {
             e.printStackTrace();
-        } 
+        }
+
+
     }
 }

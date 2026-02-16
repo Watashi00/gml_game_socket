@@ -24,6 +24,7 @@
     {"id":{"name":"Socket","path":"objects/Socket/Socket.yy",},},
     {"id":{"name":"rm_game","path":"rooms/rm_game/rm_game.yy",},},
     {"id":{"name":"Config","path":"scripts/Config/Config.yy",},},
+    {"id":{"name":"Functions","path":"scripts/Functions/Functions.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
